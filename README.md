@@ -1,2 +1,2 @@
 # jupyter-tensorflow-gpu
-A Jupyter with tensorflow and GPU support.
+A Jupyter notebook lab environment with tensorflow and GPU support.
