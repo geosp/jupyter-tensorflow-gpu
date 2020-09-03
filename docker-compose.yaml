@@ -1,0 +1,16 @@
+version: "2.3"
+services:
+  jupyter_tensor_flow:
+    hostname: jupyter_tensor_flow_gpu
+    container_name: jupyter_tensor_flow_gpu
+    image: tensorflow/tensorflow:latest-gpu-jupyter
+    ports:
+      - 8888:8888
+      - 6006:6006
+    volumes:
+      - ./work:/tf
+    runtime: nvidia
+    # To generate password in the container for the first time run this command:
+    # python3 -c "from notebook.auth import passwd; print(passwd('your_password'))"
+    # then replace the hash in here.
+    command: jupyter notebook --allow-root --ip 0.0.0.0 --NotebookApp.password='sha1:67e1d580e9a4:2562cba4452b776c7753a06f37264307f1437105'
