@@ -16,7 +16,7 @@ Use the hash for the password in Jupyter using the argument `--NotebookApp.passw
 
 **Using the GPU in Kubernetes (microk8s)**
 
-1. Enable GPU.
+1. Install GPU drivers and container runtime: https://github.com/NVIDIA/nvidia-container-runtime.
 2. Modify /var/snap/microk8s/current/args/kubelet:
 
 ```bash
