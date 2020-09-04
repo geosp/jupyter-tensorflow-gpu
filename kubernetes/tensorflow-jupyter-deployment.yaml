@@ -17,19 +17,24 @@ spec:
     spec:
       containers:
         - command:
-            - start-notebook.sh
-            - --NotebookApp.password=sha1:93ba4185c3ff:2e8d91be9948b031157fffc54d8b6bc7b123fe4a
-          image: jupyter/tensorflow-notebook
+            - jupyter
+            - notebook
+            - --allow-root
+            - --ip
+            - 0.0.0.0
+            - --no-browser
+            - --NotebookApp.password='sha1:67e1d580e9a4:2562cba4452b776c7753a06f37264307f1437105'
+          image: tensorflow/tensorflow:latest-gpu-jupyter
           imagePullPolicy: IfNotPresent
           name: tensorflow-jupyter
           ports:
             - containerPort: 8888
             - containerPort: 6006
           volumeMounts:
-            - mountPath: /home/jovyan/work
+            - mountPath: /tf
               name: tensorflow-jupyter-data-pv-claim
               readOnly: false
-          resources: {}
+          resources: { limits: { "nvidia.com/gpu": 1 } }
       hostname: tensorflow-jupyter
       restartPolicy: Always
       serviceAccountName: ""
@@ -38,5 +43,5 @@ spec:
           persistentVolumeClaim:
             claimName: tensorflow-jupyter-data-pv-claim
       nodeSelector:
-        kubernetes.io/hostname: 192.168.1.9
+        kubernetes.io/hostname: pop-os
 status: {}
