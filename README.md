@@ -14,7 +14,7 @@ python3 -c "from notebook.auth import passwd; print(passwd('your_password'))"
 
 Use the hash for the password in Jupyter using the argument `--NotebookApp.password`
 
-If you want to use the GPU Kubernetes (microk8s) then:
+**Using the GPU in Kubernetes (microk8s)**
 
 1. Enable GPU.
 2. Modify /var/snap/microk8s/current/args/kubelet:
