@@ -18,13 +18,13 @@ spec:
       containers:
         - command:
             - jupyter
-            - notebook
+            - lab # or notebook official immage only supports book
             - --allow-root
             - --ip
             - 0.0.0.0
             - --no-browser
             - --NotebookApp.password='sha1:67e1d580e9a4:2562cba4452b776c7753a06f37264307f1437105'
-          image: tensorflow/tensorflow:latest-gpu-jupyter
+          image: localhost:32000/jupyterlab-tensorflow-gpu:2.3.0 # or use official image tensorflow/tensorflow:latest-gpu-jupyter
           imagePullPolicy: IfNotPresent
           name: tensorflow-jupyter
           ports:
