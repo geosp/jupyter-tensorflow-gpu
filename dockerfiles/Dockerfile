@@ -104,8 +104,14 @@ RUN chmod a+rwx /etc/bash.bashrc
 
 RUN python3 -m pip install --no-cache-dir jupyterlab matplotlib
 # Pin ipykernel and nbformat; see https://github.com/ipython/ipykernel/issues/422
-RUN python3 -m pip install --no-cache-dir jupyter_http_over_ws ipykernel==5.1.1 nbformat==4.4.0
-RUN jupyter serverextension enable --py jupyter_http_over_ws
+RUN python3 -m pip install --no-cache-dir jupyter_http_over_ws ipykernel==5.1.1 nbformat==4.4.0 ipywidgets
+RUN jupyter serverextension enable --py jupyter_http_over_ws && \
+    jupyter nbextension enable --py widgetsnbextension
+# Install support for Node 14
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt install -y nodejs vim dnsutils && \
+    npm install -g --unsafe-perm ijavascript && \
+    ijsinstall
 
 RUN mkdir -p /tf/tensorflow-tutorials && chmod -R a+rwx /tf/
 RUN mkdir /.local && chmod a+rwx /.local
