@@ -8,7 +8,8 @@ services:
       - 8888:8888
       - 6006:6006
     volumes:
-      - ./work:/tf
+      - ./work:/tf/work
+      - ./notebooks:/tf/notebooks
       - ~/.ssh:/root/.ssh
     runtime: nvidia
     # To generate password in the container for the first time run this command:
