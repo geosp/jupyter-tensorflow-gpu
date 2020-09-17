@@ -9,6 +9,7 @@ services:
       - 6006:6006
     volumes:
       - ./work:/tf
+      - ~/.ssh:/root/.ssh
     runtime: nvidia
     # To generate password in the container for the first time run this command:
     # python3 -c "from notebook.auth import passwd; print(passwd('your_password'))"
