@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Jupyter Lab with TensorFlow GPU Support
 
 You can use the [editor on GitHub](https://github.com/geosp/jupyter-tensorflow-gpu/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
