@@ -1,37 +1,25 @@
 ## Jupyter Lab with TensorFlow GPU Support
 
-You can use the [editor on GitHub](https://github.com/geosp/jupyter-tensorflow-gpu/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+A Jupyter Lab environment with tensorflow and GPU support.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Using the container.
 
-### Markdown
+**Generating password for Jupyter Notebook**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+To generate password `in the container` for the first time, run this command:
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```bash
+python3 -c "from notebook.auth import passwd; print(passwd('your_password'))"
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Use the hash for the password in Jupyter using the argument `--NotebookApp.password`
 
-### Jekyll Themes
+**Using the GPU in Kubernetes (microk8s)**
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/geosp/jupyter-tensorflow-gpu/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. Install GPU drivers and container runtime: https://github.com/NVIDIA/nvidia-container-runtime.
+2. Modify /var/snap/microk8s/current/args/kubelet:
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```bash
+   --container-runtime=docker
+   --container-runtime-endpoint=\${SNAP_COMMON}/run/docker.sock
+```
